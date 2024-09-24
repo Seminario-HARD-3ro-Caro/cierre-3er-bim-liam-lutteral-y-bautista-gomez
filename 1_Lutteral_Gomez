@@ -1,0 +1,24 @@
+#define BUTTON_PIN 2  // Define el pin del botón
+const int ledPins[] = {3, 4, 5, 6};  // Array con los pines de los LEDs
+const int numLeds = sizeof(ledPins) / sizeof(int);  // Número de LEDs
+int currentLed = 0;  // Índice del LED actual
+bool lastButtonState = LOW;  // Estado anterior del botón
+
+void setup() {
+  pinMode(BUTTON_PIN, INPUT);  // Configura el pin del botón como entrada
+  for (int i = 0; i < numLeds; i++) {
+    pinMode(ledPins[i], OUTPUT);  // Configura cada pin de LED como salida
+  }
+}
+
+void loop() {
+  bool currentButtonState = digitalRead(BUTTON_PIN);  // Lee el estado actual del botón
+  if (currentButtonState != lastButtonState) {  // Compara si el estado del botón ha cambiado
+    if (currentButtonState == HIGH) {  // Si el botón está presionado
+      digitalWrite(ledPins[currentLed], LOW);  // Apaga el LED actual
+      currentLed = (currentLed + 1) % numLeds;  // Avanza al siguiente LED
+      digitalWrite(ledPins[currentLed], HIGH);  // Enciende el nuevo LED
+    }
+    lastButtonState = currentButtonState;  // Actualiza el estado anterior del botón
+  }
+}

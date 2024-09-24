@@ -1,0 +1,27 @@
+ const int buton = 2; // Define el pin al que está conectado el botón
+const int led1 = 3; // Define el pin al que está conectado el LED1
+const int led2 = 4; // Define el pin al que está conectado el LED2
+const int led3 = 5;  // Define el pin al que está conectado el LED3
+const int led4 = 6; // Define el pin al que está conectado el LED4
+
+void setup() {
+  pinMode(buton, INPUT); // Configura el pin del botón como entrada
+  pinMode(led1, OUTPUT); // Configura el pin del LED1 como salida
+  pinMode(led2, OUTPUT); // Configura el pin del LED2 como salida
+  pinMode(led3, OUTPUT); // Configura el pin del LED3 como salida
+  pinMode(led4, OUTPUT); // Configura el pin del LED4 como salida
+}
+
+void loop() {
+  if (digitalRead(buton) == HIGH) { // Lee el estado del botón: si está presionado
+    digitalWrite(led1, HIGH); // prende led 1
+    digitalWrite(led2, HIGH); // prende led 2
+    digitalWrite(led3, HIGH);// prende led 3
+    digitalWrite(led4, HIGH); // prende led 4
+  } else {
+    digitalWrite(led1, LOW); // apaga led 1
+    digitalWrite(led2, LOW); // apaga led 2
+    digitalWrite(led3, LOW); // apaga led 3
+    digitalWrite(led4, LOW); // apaga led 4
+  }
+}
